@@ -7,6 +7,8 @@ export const config = {
     signIn: '/sign-in',
     error: '/sign-in',
   },
+  // No providers needed for middleware-only authorization
+  providers: [],
   // Only keep edge-safe logic for middleware
   callbacks: {
     authorized({ request, auth }: any) {
@@ -24,8 +26,8 @@ export const config = {
       return true
     },
   },
-} satisfies NextAuthConfig
+} satisfies Partial<NextAuthConfig>
 
-export const { auth } = NextAuth(config)
+export const { auth } = NextAuth(config as NextAuthConfig)
 
 
