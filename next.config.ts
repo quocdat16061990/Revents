@@ -33,7 +33,10 @@ const nextConfig: NextConfig = {
       config.externals = config.externals || [];
       
       // Externalize Prisma packages and generated files
-      config.externals.push(({ request, context }, callback) => {
+      config.externals.push((
+        { request, context }: { request?: string; context?: unknown },
+        callback: (err?: unknown, result?: string) => void,
+      ) => {
         // Externalize Prisma packages
         if (request === '@prisma/client' || request === 'prisma' || 
             request === '@prisma/adapter-neon' || request === '@neondatabase/serverless') {

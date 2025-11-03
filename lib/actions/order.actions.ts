@@ -12,7 +12,7 @@ import { CartItem, PaymentResult, ShippingAddress, Order } from '@/types';
 import { convertToPlainObject } from '../utils';
 import { paypal } from '../paypal';
 import { PAGE_SIZE } from '../constants';
-import { Prisma } from '@/lib/generated/prisma';
+import { Prisma } from '@prisma/client';
 import { sendPurchaseReceipt } from '@/email';
 
 

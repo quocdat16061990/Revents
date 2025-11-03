@@ -131,7 +131,7 @@ PurchaseReceiptEmail.PreviewProps = {
       slug: x.slug,
       qty: x.stock,
       image: x.images[0],
-      price: x.price,
+      price: typeof x.price === 'number' ? x.price.toFixed(2) : String(x.price),
     })),
     isDelivered: true,
     deliveredAt: new Date(),

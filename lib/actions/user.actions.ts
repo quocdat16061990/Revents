@@ -10,7 +10,7 @@ import { auth } from '@/auth';
 import { shippingAddressSchema, paymentMethodSchema, updateUserSchema } from '../validators';
 import { z } from 'zod';
 import { PAGE_SIZE } from '../constants';
-import { Prisma } from '@/lib/generated/prisma';
+import { Prisma } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 
 

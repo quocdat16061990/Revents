@@ -5,7 +5,7 @@ import { prisma } from '@/db/prisma';
 import { revalidatePath } from 'next/cache';
 import { insertProductSchema, updateProductSchema } from '../validators';
 import { z } from 'zod';
-import { Prisma } from '@/lib/generated/prisma';
+import { Prisma } from '@prisma/client';
 
 
 

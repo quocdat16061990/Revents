@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Input } from '@/components/ui/input';
 import Menu from '@/components/shared/header/menu';
 import { MainNav } from './main-nav';
-import { User } from '@/lib/generated/prisma';
+import { User } from '@prisma/client';
 import AdminSearch from '@/components/shared/admin/admin-search';
 
 

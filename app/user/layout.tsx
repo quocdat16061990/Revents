@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Menu from '@/components/shared/header/menu';
 import MainNav from './main-nav';
-import { User } from '@/lib/generated/prisma';
+import { User } from '@prisma/client';
 
 
 export default async function UserLayout({
