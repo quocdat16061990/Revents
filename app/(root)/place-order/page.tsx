@@ -36,6 +36,7 @@ const placeOrderPage = async () => {
   const user = await getUserById(userId);
 
   if (!cart || cart.items.length === 0) redirect('/cart');
+  if (!user) redirect('/shipping-address');
   if (!user.address) redirect('/shipping-address');
   if (!user.paymentMethod) redirect('/payment-method');
 
