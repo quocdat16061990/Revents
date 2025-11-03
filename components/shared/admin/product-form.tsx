@@ -61,11 +61,11 @@ const ProductForm = ({ type, product, productId }: ProductFormProps) => {
         : await updateProduct(values as any);
         
       if (result.success) {
-        toast({ title: result.message });
+        toast.success(result.message);
         router.push('/admin/products');
         router.refresh();
       } else {
-        toast({ title: result.message, variant: 'destructive' });
+        toast.error(result.message);
       }
     });
   };
@@ -222,11 +222,7 @@ const ProductForm = ({ type, product, productId }: ProductFormProps) => {
                       field.onChange([...field.value, ...urls]);
                     }}
                     onUploadError={(error) => {
-                      toast({
-                        title: 'Upload failed',
-                        description: error.message,
-                        variant: 'destructive',
-                      });
+                      toast.error(`Upload failed: ${error.message}`);
                     }}
                   />
                   {field.value && field.value.length > 0 && (
@@ -280,11 +276,7 @@ const ProductForm = ({ type, product, productId }: ProductFormProps) => {
                       field.onChange(res[0]?.url || null);
                     }}
                     onUploadError={(error) => {
-                      toast({
-                        title: 'Upload failed',
-                        description: error.message,
-                        variant: 'destructive',
-                      });
+                      toast.error(`Upload failed: ${error.message}`);
                     }}
                   />
                   {field.value && (
