@@ -16,6 +16,13 @@ const nextConfig: NextConfig = {
     ],
     domains: ['images.unsplash.com', 'utfs.io'],
   },
+  experimental: {
+    serverComponentsExternalPackages: [
+      '@prisma/client',
+      'prisma',
+      '@prisma/adapter-neon',
+    ],
+  },
 };
 
 export default nextConfig;
