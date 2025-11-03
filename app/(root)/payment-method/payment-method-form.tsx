@@ -44,10 +44,7 @@ const PaymentMethodForm = ({
       const res = await updateUserPaymentMethod(values);
 
       if (!res.success) {
-        toast({
-          variant: 'destructive',
-          description: res.message,
-        });
+        toast.error(res.message || 'Something went wrong');
 
         return;
       }
