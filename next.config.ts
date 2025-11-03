@@ -16,12 +16,44 @@ const nextConfig: NextConfig = {
     ],
     domains: ['images.unsplash.com', 'utfs.io'],
   },
-  experimental: {
-    serverComponentsExternalPackages: [
-      '@prisma/client',
-      'prisma',
-      '@prisma/adapter-neon',
-    ],
+  // Externalize Prisma and related packages to prevent bundling issues
+  serverExternalPackages: [
+    '@prisma/client',
+    'prisma',
+    '@prisma/adapter-neon',
+    '@neondatabase/serverless',
+  ],
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      // Externalize Prisma on server side to prevent webpack bundling issues with node: scheme
+      config.externals = config.externals || [];
+      
+      // Externalize Prisma packages and generated files
+      config.externals.push(({ request, context }, callback) => {
+        // Externalize Prisma packages
+        if (request === '@prisma/client' || request === 'prisma' || 
+            request === '@prisma/adapter-neon' || request === '@neondatabase/serverless') {
+          return callback(null, `commonjs ${request}`);
+        }
+        
+        // Externalize generated Prisma client files
+        if (request && (
+          request.includes('lib/generated/prisma') ||
+          request.includes('@/lib/generated/prisma') ||
+          request.includes('./lib/generated/prisma')
+        )) {
+          return callback(null, `commonjs ${request}`);
+        }
+        
+        // Externalize node: scheme imports (they are Node.js built-ins)
+        if (request && request.startsWith('node:')) {
+          return callback(null, `commonjs ${request}`);
+        }
+        
+        callback();
+      });
+    }
+    return config;
   },
 };
 
