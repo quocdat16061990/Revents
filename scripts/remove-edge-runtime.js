@@ -9,12 +9,19 @@ const runtimeFilesToRemove = [
   'wasm-engine-edge.js',
   'wasm-edge-light-loader.mjs',
   'wasm-worker-loader.mjs',
+  'edge.js',
+  'edge-esm.js',
+  'wasm-compiler-edge.js',
 ];
 
 // Files to remove from prisma root directory
 const prismaFilesToRemove = [
   'wasm.js',
   'wasm.d.ts',
+  'edge.js',
+  'edge.d.ts',
+  'default.js',
+  'default.d.ts',
 ];
 
 // Remove runtime files
@@ -30,7 +37,7 @@ runtimeFilesToRemove.forEach((file) => {
   }
 });
 
-// Remove wasm files from prisma root
+// Remove edge-related files from prisma root
 prismaFilesToRemove.forEach((file) => {
   const filePath = path.join(prismaDir, file);
   try {
