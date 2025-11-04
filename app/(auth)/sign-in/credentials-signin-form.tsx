@@ -56,7 +56,7 @@ const CredentialsSignInForm = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-sm font-semibold text-gray-700">
+                <FormLabel className="text-sm font-semibold text-gray-700 dark:text-gray-200">
                   Email
                 </FormLabel>
                 <FormControl>
@@ -64,10 +64,10 @@ const CredentialsSignInForm = () => {
                     type='email'
                     placeholder='Nhập email của bạn'
                     autoComplete='email'
-                    className={`h-12 px-4 text-base border-2 rounded-xl transition-all duration-200 ${
+                    className={`h-12 px-4 text-base border-2 rounded-xl transition-all duration-200 dark:bg-gray-700 dark:text-white dark:border-gray-600 ${
                       form.formState.errors.email
-                        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200'
-                        : 'border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200'
+                        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200 dark:focus:ring-red-800'
+                        : 'border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:border-blue-400 dark:focus:ring-blue-800'
                     }`}
                     {...field}
                   />
@@ -82,7 +82,7 @@ const CredentialsSignInForm = () => {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-sm font-semibold text-gray-700">
+                <FormLabel className="text-sm font-semibold text-gray-700 dark:text-gray-200">
                   Mật khẩu
                 </FormLabel>
                 <FormControl>
@@ -90,10 +90,10 @@ const CredentialsSignInForm = () => {
                     type='password'
                     placeholder='Nhập mật khẩu'
                     autoComplete='current-password'
-                    className={`h-12 px-4 text-base border-2 rounded-xl transition-all duration-200 ${
+                    className={`h-12 px-4 text-base border-2 rounded-xl transition-all duration-200 dark:bg-gray-700 dark:text-white dark:border-gray-600 ${
                       form.formState.errors.password
-                        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200'
-                        : 'border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200'
+                        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200 dark:focus:ring-red-800'
+                        : 'border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:border-blue-400 dark:focus:ring-blue-800'
                     }`}
                     {...field}
                   />
@@ -118,11 +118,11 @@ const CredentialsSignInForm = () => {
             )}
           </Button>
 
-          <div className='text-sm text-center text-gray-600 pt-4'>
+          <div className='text-sm text-center text-gray-600 dark:text-gray-300 pt-4'>
             Chưa có tài khoản?{' '}
             <Link
               target='_self'
-              className='text-blue-600 hover:text-blue-800 font-semibold underline decoration-2 underline-offset-2 hover:decoration-blue-800 transition-all duration-200'
+              className='text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-semibold underline decoration-2 underline-offset-2 hover:decoration-blue-800 dark:hover:decoration-blue-300 transition-all duration-200'
               href={`/sign-up?callbackUrl=${callbackUrl}`}
             >
               Đăng ký ngay

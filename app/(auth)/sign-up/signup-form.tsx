@@ -59,7 +59,7 @@ const SignUpForm = () => {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-sm font-semibold text-gray-700">
+                <FormLabel className="text-sm font-semibold text-gray-700 dark:text-gray-200">
                   Họ và tên
                 </FormLabel>
                 <FormControl>
@@ -67,10 +67,10 @@ const SignUpForm = () => {
                     type='text'
                     placeholder='Nhập họ và tên của bạn'
                     autoComplete='name'
-                    className={`h-12 px-4 text-base border-2 rounded-xl transition-all duration-200 ${
+                    className={`h-12 px-4 text-base border-2 rounded-xl transition-all duration-200 dark:bg-gray-700 dark:text-white dark:border-gray-600 ${
                       form.formState.errors.name
-                        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200'
-                        : 'border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200'
+                        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200 dark:focus:ring-red-800'
+                        : 'border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 dark:focus:border-green-400 dark:focus:ring-green-800'
                     }`}
                     {...field}
                   />
@@ -85,7 +85,7 @@ const SignUpForm = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-sm font-semibold text-gray-700">
+                <FormLabel className="text-sm font-semibold text-gray-700 dark:text-gray-200">
                   Email
                 </FormLabel>
                 <FormControl>
@@ -93,10 +93,10 @@ const SignUpForm = () => {
                     type='email'
                     placeholder='Nhập email của bạn'
                     autoComplete='email'
-                    className={`h-12 px-4 text-base border-2 rounded-xl transition-all duration-200 ${
+                    className={`h-12 px-4 text-base border-2 rounded-xl transition-all duration-200 dark:bg-gray-700 dark:text-white dark:border-gray-600 ${
                       form.formState.errors.email
-                        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200'
-                        : 'border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200'
+                        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200 dark:focus:ring-red-800'
+                        : 'border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 dark:focus:border-green-400 dark:focus:ring-green-800'
                     }`}
                     {...field}
                   />
@@ -111,7 +111,7 @@ const SignUpForm = () => {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-sm font-semibold text-gray-700">
+                <FormLabel className="text-sm font-semibold text-gray-700 dark:text-gray-200">
                   Mật khẩu
                 </FormLabel>
                 <FormControl>
@@ -119,15 +119,15 @@ const SignUpForm = () => {
                     type='password'
                     placeholder='Nhập mật khẩu'
                     autoComplete='new-password'
-                    className={`h-12 px-4 text-base border-2 rounded-xl transition-all duration-200 ${
+                    className={`h-12 px-4 text-base border-2 rounded-xl transition-all duration-200 dark:bg-gray-700 dark:text-white dark:border-gray-600 ${
                       form.formState.errors.password
-                        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200'
-                        : 'border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200'
+                        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200 dark:focus:ring-red-800'
+                        : 'border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 dark:focus:border-green-400 dark:focus:ring-green-800'
                     }`}
                     {...field}
                   />
                 </FormControl>
-                <FormDescription className="text-xs text-gray-500">
+                <FormDescription className="text-xs text-gray-500 dark:text-gray-400">
                   Mật khẩu phải có ít nhất 6 ký tự
                 </FormDescription>
                 <FormMessage />
@@ -140,7 +140,7 @@ const SignUpForm = () => {
             name="confirmPassword"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-sm font-semibold text-gray-700">
+                <FormLabel className="text-sm font-semibold text-gray-700 dark:text-gray-200">
                   Xác nhận mật khẩu
                 </FormLabel>
                 <FormControl>
@@ -148,10 +148,10 @@ const SignUpForm = () => {
                     type='password'
                     placeholder='Nhập lại mật khẩu'
                     autoComplete='new-password'
-                    className={`h-12 px-4 text-base border-2 rounded-xl transition-all duration-200 ${
+                    className={`h-12 px-4 text-base border-2 rounded-xl transition-all duration-200 dark:bg-gray-700 dark:text-white dark:border-gray-600 ${
                       form.formState.errors.confirmPassword
-                        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200'
-                        : 'border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200'
+                        ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200 dark:focus:ring-red-800'
+                        : 'border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 dark:focus:border-green-400 dark:focus:ring-green-800'
                     }`}
                     {...field}
                   />
@@ -176,11 +176,11 @@ const SignUpForm = () => {
             )}
           </Button>
 
-          <div className='text-sm text-center text-gray-600 pt-4'>
+          <div className='text-sm text-center text-gray-600 dark:text-gray-300 pt-4'>
             Đã có tài khoản?{' '}
             <Link
               target='_self'
-              className='text-green-600 hover:text-green-800 font-semibold underline decoration-2 underline-offset-2 hover:decoration-green-800 transition-all duration-200'
+              className='text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 font-semibold underline decoration-2 underline-offset-2 hover:decoration-green-800 dark:hover:decoration-green-300 transition-all duration-200'
               href={`/sign-in?callbackUrl=${callbackUrl}`}
             >
               Đăng nhập ngay

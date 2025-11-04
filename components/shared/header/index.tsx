@@ -8,7 +8,7 @@ import Search from './search';
 
 const Header = () => {
   return (
-    <header className="w-full border-b border-gray-200 shadow-sm backdrop-blur-sm bg-white/95 sticky top-0 z-[9999]">
+    <header className="w-full border-b border-gray-200 dark:border-gray-800 shadow-sm backdrop-blur-sm bg-white/95 dark:bg-gray-900/95 sticky top-0 z-[9999]">
       <div className="wrapper flex-between py-4">
         <div className="flex-start">
           <CategoriesDrawer />
@@ -21,7 +21,7 @@ const Header = () => {
               alt={`${APP_NAME} logo`}
               className="group-hover:scale-110 transition-transform duration-300 ml-4"
             />
-            <span className="hidden lg:block font-bold text-2xl ml-3 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+            <span className="hidden lg:block font-bold text-2xl ml-3 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
               {APP_NAME}
             </span>
           </Link>

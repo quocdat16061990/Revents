@@ -34,9 +34,9 @@ const SignIn = async (
   }
 
   return (
-    <div className='min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 px-4 py-8'>
+    <div className='min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 py-8'>
       <div className='w-full max-w-4xl mx-auto pt-12'>
-        <Card className='shadow-2xl border-0 bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden'>
+        <Card className='shadow-2xl border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl overflow-hidden'>
           <CardHeader className='space-y-6 text-center pb-6 pt-8'>
             <Link href='/' className='flex justify-center group'>
               <Image
@@ -49,10 +49,10 @@ const SignIn = async (
               />
             </Link>
             <div>
-              <CardTitle className='text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent'>
+              <CardTitle className='text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent'>
                 Chào mừng trở lại
               </CardTitle>
-              <CardDescription className='text-gray-600 mt-3 text-lg'>
+              <CardDescription className='text-gray-600 dark:text-gray-300 mt-3 text-lg'>
                 Đăng nhập để tiếp tục sử dụng dịch vụ
               </CardDescription>
             </div>
