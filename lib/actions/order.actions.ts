@@ -196,9 +196,11 @@ export async function approvePayPalOrder(
 export async function updateOrderToPaid({
   orderId,
   paymentResult,
+  autoVerifyAddress = false,
 }: {
   orderId: string;
   paymentResult?: PaymentResult;
+  autoVerifyAddress?: boolean; // Tự động verify address (dùng cho Stripe)
 }) {
   // Find the order in the database and include the order items
   const order = await prisma.order.findFirst({
@@ -228,13 +230,14 @@ export async function updateOrderToPaid({
       });
     }
 
-    // Set the order to paid
+    // Set the order to paid and optionally verify address
     await tx.order.update({
       where: { id: orderId },
       data: {
         isPaid: true,
         paidAt: new Date(),
         paymentResult,
+        ...(autoVerifyAddress && { addressVerified: true }), // Tự động verify address khi thanh toán Stripe
       },
     });
   });

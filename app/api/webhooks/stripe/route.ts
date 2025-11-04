@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
         email: object.billing_details.email,
       });
 
-      // Update the order status to paid
+      // Update the order status to paid and auto-verify address
       await updateOrderToPaid({
         orderId: object.metadata.orderId,
         paymentResult: {
@@ -45,9 +45,11 @@ export async function POST(req: NextRequest) {
           email_address: object.billing_details.email!,
           pricePaid: (object.amount / 100).toFixed(),
         },
+        autoVerifyAddress: true, // Tự động verify address khi thanh toán Stripe thành công
       });
 
-      console.log(`✅ [Stripe Webhook] Order ${object.metadata.orderId} updated successfully\n`);
+      console.log(`✅ [Stripe Webhook] Order ${object.metadata.orderId} updated successfully`);
+      console.log(`✅ [Stripe Webhook] Address automatically verified\n`);
 
       return NextResponse.json({
         message: 'updateOrderToPaid was successful',
