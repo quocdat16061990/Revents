@@ -21,13 +21,13 @@ export const prisma = new PrismaClient({
       result: {
         product: {
           price: {
-            compute(product: { price: { toString(): string } }) {
-              return product.price.toString();
+            compute(product: { price?: { toString(): string } | null }) {
+              return product.price?.toString() ?? '0';
             },
           },
           rating: {
-            compute(product: { rating: { toString(): string } }) {
-              return product.rating.toString();
+            compute(product: { rating?: { toString(): string } | null }) {
+              return product.rating?.toString() ?? '0';
             },
           },
         },
