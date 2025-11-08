@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { prisma } from '@/db/prisma';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { Star, ShoppingCart, Heart, Share2, ArrowLeft } from 'lucide-react';
+import { Star, Heart, Share2, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import AddToCart from '@/components/shared/product/add-to-cart';
 import { getMyCart } from '@/lib/actions/cart.actions';
@@ -55,7 +55,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
       stars.push(
         <Star
           key={i}
-          className={`h-5 w-5 ${i <= rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'
+          className={`h-5 w-5 ${i <= rating ? 'fill-yellow-400 text-yellow-400 dark:fill-yellow-500 dark:text-yellow-500' : 'text-gray-300 dark:text-gray-600'
             }`}
         />
       );
@@ -66,20 +66,20 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
   return (
     <>
       <section>
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-background">
           <div className="max-w-6xl mx-auto px-4 py-8">
             {/* Back Button */}
-            <Link href="/" className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-6 cursor-pointer hover-opacity">
+            <Link href="/" className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 mb-6 cursor-pointer hover-opacity">
               <ArrowLeft className="h-4 w-4" />
               Quay lại trang chủ
             </Link>
 
             {/* Product Content */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div className="bg-card rounded-lg shadow-lg overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
                 {/* Product Image */}
                 <div className="space-y-4">
-                  <div className="aspect-square overflow-hidden rounded-lg bg-gray-100">
+                  <div className="aspect-square overflow-hidden rounded-lg bg-muted">
                     <Image
                       src={product.images[0] || '/placeholder-product.svg'}
                       alt={product.name}
@@ -94,7 +94,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                   {product.images.length > 1 && (
                     <div className="grid grid-cols-4 gap-2">
                       {product.images.slice(0, 4).map((image, index) => (
-                        <div key={index} className="aspect-square overflow-hidden rounded-lg border-2 border-gray-200 hover:border-blue-500 transition-colors cursor-pointer hover-scale">
+                        <div key={index} className="aspect-square overflow-hidden rounded-lg border-2 border-border hover:border-blue-500 dark:hover:border-blue-400 transition-colors cursor-pointer hover-scale">
                           <Image
                             src={image}
                             alt={`${product.name} ${index + 1}`}
@@ -112,10 +112,10 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                 <div className="space-y-6">
                   {/* Brand & Title */}
                   <div>
-                    <span className="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
+                    <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full">
                       {product.brand}
                     </span>
-                    <h1 className="text-3xl font-bold text-gray-900 mt-3 mb-2">
+                    <h1 className="text-3xl font-bold text-card-foreground mt-3 mb-2">
                       {product.name}
                     </h1>
                   </div>
@@ -125,26 +125,25 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                     <div className="flex">
                       {renderStars(Math.round(Number(product.rating)))}
                     </div>
-                    <span className="text-sm text-gray-600">
-                      <Rating value={Number(product.rating)} />
+                    <span className="text-sm text-muted-foreground">
                       <p>{product.numReviews} reviews</p>
                     </span>
                   </div>
 
                   {/* Price */}
-                  <div className="text-4xl font-bold text-blue-600">
+                  <div className="text-4xl font-bold text-blue-600 dark:text-blue-400">
                     {formatPrice(Number(product.price))}
                   </div>
 
                   {/* Description */}
-                  <div className="text-gray-700 leading-relaxed text-lg">
+                  <div className="text-card-foreground/80 leading-relaxed text-lg">
                     {product.description}
                   </div>
 
                   {/* Stock Status */}
                   <div className="flex items-center gap-3">
-                    <div className={`w-4 h-4 rounded-full ${product.stock > 0 ? 'bg-green-500' : 'bg-red-500'}`}></div>
-                    <span className="text-lg font-medium">
+                    <div className={`w-4 h-4 rounded-full ${product.stock > 0 ? 'bg-green-500 dark:bg-green-400' : 'bg-red-500 dark:bg-red-400'}`}></div>
+                    <span className="text-lg font-medium text-card-foreground">
                       {product.stock > 0 ? `${product.stock} sản phẩm có sẵn` : 'Hết hàng'}
                     </span>
                   </div>
@@ -176,20 +175,20 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                   </div>
 
                   {/* Product Details */}
-                  <div className="border-t pt-6">
-                    <h3 className="text-xl font-semibold mb-4">Thông tin sản phẩm</h3>
-                    <div className="space-y-2 text-gray-600">
+                  <div className="border-t border-border pt-6">
+                    <h3 className="text-xl font-semibold mb-4 text-card-foreground">Thông tin sản phẩm</h3>
+                    <div className="space-y-2 text-muted-foreground">
                       <div className="flex justify-between">
                         <span>Danh mục:</span>
-                        <span className="font-medium">{product.category}</span>
+                        <span className="font-medium text-card-foreground">{product.category}</span>
                       </div>
                       <div className="flex justify-between">
                         <span>Thương hiệu:</span>
-                        <span className="font-medium">{product.brand}</span>
+                        <span className="font-medium text-card-foreground">{product.brand}</span>
                       </div>
                       <div className="flex justify-between">
                         <span>Số lượng:</span>
-                        <span className="font-medium">{product.stock}</span>
+                        <span className="font-medium text-card-foreground">{product.stock}</span>
                       </div>
                     </div>
                   </div>
@@ -201,8 +200,8 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
         </div>
       </section>
-      <section className='mt-10'>
-        <h2 className='h2-bold  mb-5'>Customer Reviews</h2>
+      <section className='max-w-6xl mx-auto px-4 py-8'>
+        <h2 className='h2-bold mb-5 text-foreground'>Customer Reviews</h2>
         <ReviewList
           productId={product.id}
           productSlug={product.slug}
